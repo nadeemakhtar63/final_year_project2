@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "601503192943",
+    "project_id": "patientcareapp-ee07a",
+    "storage_bucket": "patientcareapp-ee07a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601503192943:android:409125bb0deb9759effa9a",
+        "android_client_info": {
+          "package_name": "com.example.final_year_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601503192943-jf3129eohtsk3p5afpvgivpjvc8o2etb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.final_year_project",
+            "certificate_hash": "bf929f3edf9a17e130a255d57ada0bd9a4aa372d"
+          }
+        },
+        {
+          "client_id": "601503192943-0n5jhj8qkl1b191pdb9ubce7ve4a4eet.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_1ShPxPA_ZLIII09l_LjpMMauAqyU9aY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601503192943-0n5jhj8qkl1b191pdb9ubce7ve4a4eet.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
