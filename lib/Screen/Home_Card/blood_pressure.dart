@@ -1,4 +1,3 @@
-import 'package:final_year_project/Widgets/curvepaint.dart';
 import 'package:flutter/material.dart';
 
 class BloodPressure extends StatefulWidget {
@@ -12,63 +11,104 @@ class _BloodPressureState extends State<BloodPressure> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-        backgroundColor: Color(0xff787CBB),
-    elevation: 0.0,
+      body: Container(
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height*0.4,
+              child: Stack(
+                children: [
+                  Image.asset('assets/vtop.png',width: MediaQuery.of(context).size.width,),
+                Positioned(
+                  left: 30,
+                    top:MediaQuery.of(context).size.height*0.20,
+                    child: Container(
+                  height: 150,
+                  width: MediaQuery.of(context).size.width*0.8,
+                  decoration: BoxDecoration(
+                    color: Color(0xffeef2fa),
+                    borderRadius: BorderRadius.circular(40)
+                  ),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10,right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
 
-    ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Image.asset('assets/hart.png',width: 60,height: 60,),
+                                Text('BLOOD PRESSURE',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700,),),
 
-    body: CustomPaint(
-    painter: CurvePainter(),
-    child: Padding(
-    padding: const EdgeInsets.only(top: 15.0,bottom: 15),
-    child: Container(
-    child: Column(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-    Padding(
-    padding: const EdgeInsets.only(left: 20),
-    child: Container(
+                              ],
+                            ),
+                            Text('140/170',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w700,),),
 
-    height: MediaQuery.of(context).size.height*0.15,
+                          ],
 
-    ),
-    ),
+                        ),
+                      ),
+                ),
 
-    Container(
-    width: MediaQuery.of(context).size.width*0.8,
-    height: 120,
-    child: new Card(
+                )
+                ],
+              ),
+            ),
+            Expanded(child: Container()),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height*0.4,
+                child: Stack(
+                  children: [
+                    Image.asset('assets/vbotoom.png',width: MediaQuery.of(context).size.width,),
+                    Positioned(
+                      left: 30,
+                        bottom:MediaQuery.of(context).size.height*0.20,
+                        child: Container(
+                          height: 150,
+                          width: MediaQuery.of(context).size.width*0.8,
+                          decoration: BoxDecoration(
+                              color: Color(0xffeef2fa),
+                              borderRadius: BorderRadius.circular(40)
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Image.asset('assets/temp.png',width: 60,height: 60,),
+                                    Text('Temperature',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700,),),
 
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-    child: InkWell(
-    // onTap: (){Navigator.of(context).push(new
-    // MaterialPageRoute(builder: (context)=>BloodPressure()));
-    // },
-    child: new Center(
-    child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-    Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image.asset('assets/hr.png',height: 80,width: 80,),
-        Text('BLOOD PRESSURE',style: TextStyle(fontSize: 9,fontWeight: FontWeight.w700,),),
-      ],
-    ),
-    Text('120/180',style: TextStyle(color:Color(0xffED703A),fontSize: 22,fontWeight: FontWeight.bold,),),
-    ],
-    )
-    ),
-    ),
-    ),
-    ),
-    ]
+                                  ],
+                                ),
+                                Text('37c',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w700,),),
 
-    )
-    )
-    )
-    )
+                              ],
+
+                            ),
+                          ),
+                        )),
+                    Positioned(
+                        bottom: 0,
+                        child: Container(
+                          color:Color(0xab6b6fb1) ,
+                          width: MediaQuery.of(context).size.width,
+                          height: 60,
+                        )),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

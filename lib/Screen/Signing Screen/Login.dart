@@ -16,6 +16,7 @@ class _LoginState extends State<Login> {
   bool emailvalidate=false;
   bool passvalidate=false;
   bool visiblepassword=true;
+  bool check=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +24,8 @@ class _LoginState extends State<Login> {
             decoration: new BoxDecoration(
               gradient: new LinearGradient(
                   colors: [
-                    const Color(0xFFFFDD33),
                     const Color(0xFFFFFFFF),
+                    const Color(0xFFFFFAFA),
                   ],
                   begin: const FractionalOffset(0.0, 1.0),
                   end: const FractionalOffset(1.0, 0.0),
@@ -41,14 +42,25 @@ class _LoginState extends State<Login> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SizedBox(height: 40,),
+
                               Container(
-                                height: MediaQuery.of(context).size.height*0.3,
+                                height: MediaQuery.of(context).size.height*0.35,
                                  // child: Image.asset('assets/icon/iconlogin.png')
+                                child: Stack(
+                                  children: [
+
+                                    Image.asset('assets/hafbluecurve.png',width: MediaQuery.of(context).size.width,),
+                                    Image.asset('assets/blueCurve.png',width: MediaQuery.of(context).size.width,),
+
+                                  ],
+                                  
+                                ),
                               ),
-                              Expanded(child: Column(children: [
-
-
+                              SizedBox(height: 20,),
+                           PagePresentText("Login"),
+                              SizedBox(height: 20,),
+                              Expanded(child:
+                              Column(children: [
                                 textField(
                                     emailcontroler,
                                     emailvalidate,
@@ -68,7 +80,7 @@ class _LoginState extends State<Login> {
                                 ),
                                 SizedBox(height: 20,),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 20),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: InkWell(
@@ -76,7 +88,7 @@ class _LoginState extends State<Login> {
                                           Navigator.of(context).push(
                                               MaterialPageRoute(builder: (context)=>RestPassword()));
                                         },
-                                        child: Text("Forget Password",style: TextStyle(color: Colors.lightBlue,fontWeight: FontWeight.w900
+                                        child: Text("Forget Password",style: TextStyle(color: Color(0xff666aaf),fontWeight: FontWeight.w900
 
                                         ),
                                         )
@@ -86,7 +98,7 @@ class _LoginState extends State<Login> {
                                 SizedBox(height: 20,),
                                 InkWell(
                                   onTap: (){
-                                    if ((emailcontroler.text.isEmpty) &&passcontroler.text.isEmpty) {
+                                    if ((emailcontroler.text.isEmpty) ||(passcontroler.text.isEmpty)) {
                                       setState(() {
                                         emailcontroler.text.isEmpty?emailvalidate=true:emailvalidate=false;
                                         passcontroler.text.isEmpty?passvalidate=true:passvalidate=false;
@@ -98,35 +110,46 @@ class _LoginState extends State<Login> {
                                     //   Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>Navebar()));
                                   },
 
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 10,right: 10),
-                                    child: Container(
-                                      height: MediaQuery.of(context).size.height*0.08,
-                                      decoration: BoxDecoration(
-                                        color:Color(0xff007360),
-
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Center(
-                                        child: Text("Login",style: TextStyle(color: Colors.white,fontSize: 14,fontWeight: FontWeight.w600),),
-                                      ),
-                                    ) ,
-                                  ),
+                                  child:ButtonDesign("LogIn", context)
                                 ),
                                 SizedBox(height: 20,),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: InkWell(
-                                      onTap: (){
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp()));
-                                      },
-                                      child: Text("Create new Account ",style: TextStyle(color: Colors.lightBlue,fontWeight: FontWeight.w900
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children:[
+                                    Checkbox(
+
+                                        value: check,
+                                        onChanged:(val){
+                                          setState(() {
+                                            check=val!;
+                                          });
+
+                                        }
+
+                                    ),
+                                   InkWell(
+                                     // onTap: (){
+                                      //  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp()));
+                                     // },
+                                      child: Text("Keep Me Sign In ",style: TextStyle(color: Color(0xff676aaf),fontWeight: FontWeight.w900
 
                                       ),
                                       )
                                   ),
+
+                          ]
                                 ),
-                                SizedBox(height: 20,)
+                                SizedBox(height: 20,),
+                                InkWell(
+                                    onTap: (){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp()));
+                                    },
+                                    child: Text("Create new Account ",style: TextStyle(color: Colors.deepPurple,fontWeight: FontWeight.w900
+
+                                    ),
+                                    )
+                                ),
                               ],
                               ) ),
                             ],),

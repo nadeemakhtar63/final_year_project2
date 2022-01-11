@@ -19,7 +19,7 @@ class _RestPasswordState extends State<RestPassword> {
         decoration: new BoxDecoration(
         gradient: new LinearGradient(
         colors: [
-        const Color(0xFFFFDD33),
+        const Color(0xFFFFFFFF),
     const Color(0xFFFFFFFF),
     ],
     begin: const FractionalOffset(0.0, 1.0),
@@ -32,6 +32,22 @@ class _RestPasswordState extends State<RestPassword> {
                 mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.35,
+                    // child: Image.asset('assets/icon/iconlogin.png')
+                    child: Stack(
+                      children: [
+
+                        Image.asset('assets/hafbluecurve.png',width: MediaQuery.of(context).size.width,),
+                        Image.asset('assets/blueCurve.png',width: MediaQuery.of(context).size.width,),
+
+                      ],
+
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  PagePresentText("Forget Password"),
+                  SizedBox(height: 20,),
                   textField(
                       email,
                       emailvalidate,
@@ -40,7 +56,7 @@ class _RestPasswordState extends State<RestPassword> {
                       false,
                       Icon(Icons.email)
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 40,),
                   InkWell(
                     onTap: () {
                       if (email.text.isEmpty) {
@@ -55,19 +71,7 @@ class _RestPasswordState extends State<RestPassword> {
 
                       }
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10,right: 10),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height*0.08,
-                        decoration: BoxDecoration(
-                          color:Color(0xff007360),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text("Send Password",style: TextStyle(color: Colors.white,fontSize: 14,fontWeight: FontWeight.w600),),
-                        ),
-                      ),
-                    ),
+                    child: ButtonDesign("Send Password", context)
                   ),
                 ],
 

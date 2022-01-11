@@ -16,6 +16,7 @@ class _LoginState extends State<SignUp> {
   bool pasvalidate=false;
   bool namevalidate=false;
   bool cpasvalidate=false;
+  bool passshow=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,7 @@ class _LoginState extends State<SignUp> {
         decoration: new BoxDecoration(
           gradient: new LinearGradient(
               colors: [
-                const Color(0xFFFFDD33),
+                const Color(0xFFFFFFFF),
                 const Color(0xFFFFFFFF),
               ],
               begin: const FractionalOffset(0.0, 1.0),
@@ -33,27 +34,24 @@ class _LoginState extends State<SignUp> {
         ),
         child: SingleChildScrollView(
           child: Column(
-
             children: [
-              SizedBox(height: 20,),
               Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height*0.4,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(image: AssetImage("assets/icon/iconlogin.png"),fit: BoxFit.cover)
-                  ),
-                  // width: MediaQuery.of(context).size.width,
-                  // height: MediaQuery.of(context).size.height*65,
+                height: MediaQuery.of(context).size.height*0.35,
 
-                ),
+                  child: Stack(
+                    children: [
+
+                      Image.asset('assets/hafbluecurve.png',width: MediaQuery.of(context).size.width,),
+                      Image.asset('assets/blueCurve.png',width: MediaQuery.of(context).size.width,),
+
+                    ],
+
+                  ),
               ),
-              Container(
-                // width: MediaQuery.of(context).size.width,
-                // height: MediaQuery.of(context).size.height*0.3,
-                child: Container(
+              SizedBox(height: 20,),
+              PagePresentText("Sign Up"),
+              SizedBox(height: 20,),
+                Container(
                   child: Column(
                     children: [
                       Column(
@@ -83,7 +81,7 @@ class _LoginState extends State<SignUp> {
                               pasvalidate,
                               "password",
                               TextInputType.visiblePassword,
-                              true,
+                              false,
                               Icon(Icons.lock)
                           ),
                           SizedBox(height: 10,),
@@ -92,15 +90,15 @@ class _LoginState extends State<SignUp> {
                               cpasvalidate,
                               "conform password",
                               TextInputType.visiblePassword,
-                              true,
+                              false,
                               Icon(Icons.lock)
                           ),
                           SizedBox(height: 10,),
                           InkWell(
                             onTap: () {
-                              if ((emailcontroler.text.isEmpty) && (passworcontroler.text.isEmpty)&&
-                                  (cpassworcontroler.text.isEmpty) && (namecontroler.text.isEmpty)
-                                  &&passworcontroler.text!=cpassworcontroler.text) {
+                              if ((emailcontroler.text.isEmpty) || (passworcontroler.text.isEmpty)||
+                                  (cpassworcontroler.text.isEmpty) || (namecontroler.text.isEmpty)
+                                  ) {
                                 setState(() {
                                   emailcontroler.text.isEmpty?emailvalidate=true:emailvalidate=false;
                                   passworcontroler.text.isEmpty?pasvalidate=true:pasvalidate=false;
@@ -108,50 +106,37 @@ class _LoginState extends State<SignUp> {
                                   cpassworcontroler.text.isEmpty?cpasvalidate=true:cpasvalidate=false;
                                 });
                               }
-                              else
-                                //   if((emailcontroler.text.isNotEmpty) && (passworcontroler.text.isNotEmpty)&&
-                                //     (cpassworcontroler.text.isNotEmpty) && (namecontroler.text.isNotEmpty)
-                                //     &&passworcontroler.text==cpassworcontroler.text)
-                                  {
+                              else if((passworcontroler.text!=cpassworcontroler.text))
+                                {
+                                  setState(() {
+                                    passworcontroler.text.isEmpty?pasvalidate=true:pasvalidate=false;
+                                    cpassworcontroler.text.isEmpty?cpasvalidate=true:cpasvalidate=false;
+                                  });
+                                }
+                              else {
                                 authController.register(emailcontroler.text, passworcontroler.text,namecontroler.text);
-                                // Navigator.pushReplacement(context,
-                                //     new MaterialPageRoute(
-                                //         builder: (context) => Navebar()));
                               }
                             },
-                            child:
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10,right: 10),
-                              child: Container(
-                                height: MediaQuery.of(context).size.height*0.08,
-                                decoration: BoxDecoration(
-                                  color:Color(0xff007360),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                  child: Text("SignUp",style: TextStyle(color: Colors.white,fontSize: 14,fontWeight: FontWeight.w600),),
-                                ),
-                              ),
-                            ),
+                            child:ButtonDesign("Next", context)
                           ),
-                          SizedBox(height: 10,),
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: InkWell(
-                                onTap:()=> Navigator.of(context).pushReplacement(
-                                    new MaterialPageRoute(builder: (context)=>Login())),
-                                child: Text("i have an Account ",style: TextStyle(color: Colors.lightBlue,fontWeight: FontWeight.w900
-                                ),
-                                )
-                            ),
-                          ),
+                          // SizedBox(height: 10,),
+                          // Align(
+                          //   alignment: Alignment.bottomRight,
+                          //   child: InkWell(
+                          //       onTap:()=> Navigator.of(context).pushReplacement(
+                          //           new MaterialPageRoute(builder: (context)=>Login())),
+                          //       child: Text("i have an Account ",style: TextStyle(color: Colors.lightBlue,fontWeight: FontWeight.w900
+                          //       ),
+                          //       )
+                          //   ),
+                          // ),
                           SizedBox(height: 20,)
                         ],
                       ),
                     ],
                   ),
                 ),
-              ),
+           //   ),
             ],
           ),
         ),
