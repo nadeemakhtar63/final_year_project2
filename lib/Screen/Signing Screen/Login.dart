@@ -1,5 +1,6 @@
 import 'package:final_year_project/Screen/Signing%20Screen/resetPassword.dart';
 import 'package:final_year_project/Screen/Signing%20Screen/signin.dart';
+import 'package:final_year_project/Screen/info_get/personalinfo.dart';
 import 'package:final_year_project/Widgets/allwidget.dart';
 import 'package:final_year_project/services/AuthController.dart';
 import 'package:flutter/material.dart';
@@ -143,7 +144,7 @@ class _LoginState extends State<Login> {
                                 SizedBox(height: 20,),
                                 InkWell(
                                     onTap: (){
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp()));
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Personal_Info()));
                                     },
                                     child: Text("Create new Account ",style: TextStyle(color: Colors.deepPurple,fontWeight: FontWeight.w900
 

@@ -1,6 +1,7 @@
 import 'package:final_year_project/Widgets/allwidget.dart';
 import 'package:final_year_project/services/AuthController.dart';
 import 'package:flutter/material.dart';
+import '../homescreen.dart';
 import 'Login.dart';
 class SignUp extends StatefulWidget {
   @override
@@ -8,15 +9,17 @@ class SignUp extends StatefulWidget {
 }
 
 class _LoginState extends State<SignUp> {
-  final namecontroler=TextEditingController();
   final emailcontroler=TextEditingController();
-  final passworcontroler=TextEditingController();
+  final passwordcontroler=TextEditingController();
+  final phonecontroler=TextEditingController();
   final cpassworcontroler=TextEditingController();
+  final gnumbercontroler=TextEditingController();
+  bool phonevalidate=false;
   bool emailvalidate=false;
   bool pasvalidate=false;
-  bool namevalidate=false;
+  bool gnumvalidate=false;
   bool cpasvalidate=false;
-  bool passshow=false;
+  //bool cpassshow=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,26 +61,35 @@ class _LoginState extends State<SignUp> {
                         children: [
 
                           textField(
-                              namecontroler,
-                              namevalidate,
-                              "name",
-                              TextInputType.name,
+                              emailcontroler,
+                              emailvalidate,
+                              "Email",
+                              TextInputType.emailAddress,
                               false,
                               Icon(Icons.person)
                           ),
                           SizedBox(height: 10,),
                           textField(
-                              emailcontroler,
-                              emailvalidate,
-                              "email",
-                              TextInputType.emailAddress,
+                              phonecontroler,
+                              phonevalidate,
+                              "Mobile Number",
+                              TextInputType.number,
 
                               false,
-                              Icon(Icons.email)
+                              Icon(Icons.phone)
                           ),
                           SizedBox(height: 10,),
                           textField(
-                              passworcontroler,
+                              gnumbercontroler,
+                              gnumvalidate,
+                              "Gardien Contect No",
+                              TextInputType.number,
+                              false,
+                              Icon(Icons.phone)
+                          ),
+                          SizedBox(height: 10,),
+                          textField(
+                              passwordcontroler,
                               pasvalidate,
                               "password",
                               TextInputType.visiblePassword,
@@ -96,28 +108,33 @@ class _LoginState extends State<SignUp> {
                           SizedBox(height: 10,),
                           InkWell(
                             onTap: () {
-                              if ((emailcontroler.text.isEmpty) || (passworcontroler.text.isEmpty)||
-                                  (cpassworcontroler.text.isEmpty) || (namecontroler.text.isEmpty)
+                              if ((emailcontroler.text.isEmpty) || (phonecontroler.text.isEmpty)||
+                                  (gnumbercontroler.text.isEmpty) || (passwordcontroler.text.isEmpty) ||
+                                  ((cpassworcontroler.text.isEmpty))
                                   ) {
                                 setState(() {
                                   emailcontroler.text.isEmpty?emailvalidate=true:emailvalidate=false;
-                                  passworcontroler.text.isEmpty?pasvalidate=true:pasvalidate=false;
-                                  namecontroler.text.isEmpty?namevalidate=true:namevalidate=false;
+                                  phonecontroler.text.isEmpty?phonevalidate=true:pasvalidate=false;
+                                  gnumbercontroler.text.isEmpty?gnumvalidate=true:gnumvalidate=false;
+                                  passwordcontroler.text.isEmpty?pasvalidate=true:pasvalidate=false;
                                   cpassworcontroler.text.isEmpty?cpasvalidate=true:cpasvalidate=false;
                                 });
                               }
-                              else if((passworcontroler.text!=cpassworcontroler.text))
+                              else if((phonecontroler.text!=cpassworcontroler.text))
                                 {
                                   setState(() {
-                                    passworcontroler.text.isEmpty?pasvalidate=true:pasvalidate=false;
+                                    passwordcontroler.text.isEmpty?pasvalidate=true:pasvalidate=false;
                                     cpassworcontroler.text.isEmpty?cpasvalidate=true:cpasvalidate=false;
                                   });
                                 }
                               else {
-                                authController.register(emailcontroler.text, passworcontroler.text,namecontroler.text);
+                                Navigator.of(context).pushReplacement(
+                                    new MaterialPageRoute(builder: (context)=>HomeScreen()));
+
+                                //authController.register(emailcontroler.text, passworcontroler.text,namecontroler.text);
                               }
                             },
-                            child:ButtonDesign("Next", context)
+                            child:ButtonDesign("Save", context)
                           ),
                           // SizedBox(height: 10,),
                           // Align(

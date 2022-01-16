@@ -8,21 +8,12 @@ import 'AuthController.dart';
 class AuthController extends GetxController{
   static AuthController instance=Get.find();
   late CollectionReference collectionReference;
-// late Rx<GoogleSignInAccount?> googleSignInAccount;
- // RxList<List<MyModule>> todolist=RxList<List<MyModule>>([]);
-// List<TodoModule> get  todos=>todolist.value;
   late Rx<User?>firebaseUser;
-  // String? get uset=>firebaseUser.value?.email;
   void onReady() {
     super.onReady();
     firebaseUser = Rx<User?>(auth.currentUser);
-    // googleSignInAccount = Rx<GoogleSignInAccount?>(googleSign.currentUser);
     ever(firebaseUser, _setInitilizeScree);
     firebaseUser.bindStream(auth.userChanges());
-    // todolist.bindStream(getcurrentEvenets());
-// todolist.bindStream(FirebaseCRUD.todoStream());
-//   googleSignInAccount.bindStream(googleSign.onCurrentUserChanged);
-//   ever(googleSignInAccount, _setInitilizeScreenGoogle);
   }
   resetPassword(String email,context)async
   {

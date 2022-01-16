@@ -1,6 +1,12 @@
 import 'package:final_year_project/Screen/Home_Card/blood_pressure.dart';
+import 'package:final_year_project/Screen/Home_Card/food_serives.dart';
+import 'package:final_year_project/Screen/Home_Card/order_medicine.dart';
+import 'package:final_year_project/Screen/Home_Card/teleconsultance/doctor_consultence.dart';
 import 'package:final_year_project/Widgets/curvepaint.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import 'Home_Card/dialysis_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -56,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
              Container(
-               height: MediaQuery.of(context).size.height*0.4,
+               height: MediaQuery.of(context).size.height*0.35,
                width: double.infinity,
                child: Stack(
                 children: [
@@ -138,168 +144,178 @@ class _HomeScreenState extends State<HomeScreen> {
              ),
 
             Padding(
-              padding: const EdgeInsets.only(left: 20.0),
+              padding: const EdgeInsets.only(left: 10.0),
               child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text('What You Need?',style: TextStyle(fontSize: 22,fontWeight: FontWeight.w900,),)),
             ),
 
+            Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (Context)=>Doctor_Consultance()));
+                          },
+                          child: Container(
+                            //  color: Color(0xffCB69A6),
+                            width: MediaQuery.of(context).size.width/2,
+                            height: 120,
+                            child: new Card(
+
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                              child: new Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset('assets/Asset3.png',height: 60,width: 60,),
+                                      SizedBox(height: 5,),
+                                      Text('Tele Consultance',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
+                                    ],
+                                  )
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context,MaterialPageRoute(builder: (context)=>Order_Me()));
+                          },
+                          child: Container(
+                          //  color: Color(0xffCB69A6),
+                            width: MediaQuery.of(context).size.width/2,
+                            height: 120,
+                            child: new Card(
+
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                              child: new Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset('assets/Asset4.png',height: 60,width: 60,),
+                                     SizedBox(height: 5,),
+                                      Text('Order Medicine',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
+                                    ],
+                                  )
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-      //           Container(
-      //           //  color: Color(0xffCB69A6),
-      //           width: MediaQuery.of(context).size.width/3,
-      //     height: 100,
-      //     child: new Card(
-      //
-      //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      //       child: new Center(
-      //           child: Column(
-      //             mainAxisAlignment: MainAxisAlignment.center,
-      //             crossAxisAlignment: CrossAxisAlignment.center,
-      //             children: [
-      //               Image.asset('assets/Asset2.png',height: 60,width: 60,color: Color(0xffED703A),),
-      //               SizedBox(height: 5,),
-      //               Text('Vital Monetring',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
-      //             ],
-      //           )
-      //       ),
-      //     ),
-      // ),
-                Container(
-                  //  color: Color(0xffCB69A6),
-                  width: MediaQuery.of(context).size.width/2,
-                  height: 120,
-                  child: new Card(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Dialysis_Transport()));
+                    },
+                    child: Container(
+                      //  color: Color(0xffCB69A6),
+                      width: MediaQuery.of(context).size.width/2,
+                      height: 120,
+                      child: new Card(
 
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                    child: new Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/Asset3.png',height: 60,width: 60,),
-                            SizedBox(height: 5,),
-                            Text('Tele Consultance',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
-                          ],
-                        )
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                        child: new Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset('assets/Asset5.png',height: 60,width: 60),
+                                SizedBox(height: 5,),
+                                Text('Dialysis Transport',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
+                              ],
+                            )
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                //  color: Color(0xffCB69A6),
-                  width: MediaQuery.of(context).size.width/2,
-                  height: 120,
-                  child: new Card(
+                  InkWell(
+                   onTap: (){
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Food_Service()));
+                   },
+                    child: Container(
+                      //  color: Color(0xffCB69A6),
+                      width: MediaQuery.of(context).size.width/2,
+                      height: 120,
+                      child: new Card(
 
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                    child: new Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/Asset4.png',height: 60,width: 60,),
-                           SizedBox(height: 5,),
-                            Text('Order Medicine',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
-                          ],
-                        )
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                        child: new Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset('assets/Asset6.png',height: 60,width: 60,color: Color(
+                                    0xff74b16a),),
+                                SizedBox(height: 5,),
+                                Text('Food Service',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
+                              ],
+                            )
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  //  color: Color(0xffCB69A6),
-                  width: MediaQuery.of(context).size.width/2,
-                  height: 120,
-                  child: new Card(
-
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                    child: new Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/Asset5.png',height: 60,width: 60),
-                            SizedBox(height: 5,),
-                            Text('Dialysis Transport',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
-                          ],
-                        )
-                    ),
-                  ),
-                ),
-                Container(
-                  //  color: Color(0xffCB69A6),
-                  width: MediaQuery.of(context).size.width/2,
-                  height: 120,
-                  child: new Card(
-
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                    child: new Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/Asset6.png',height: 60,width: 60,color: Color(
-                                0xff74b16a),),
-                            SizedBox(height: 5,),
-                            Text('Food Service',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
-                          ],
-                        )
-                    ),
-                  ),
-                ),
-                // Container(
-                //   //  color: Color(0xffCB69A6),
-                //   width: MediaQuery.of(context).size.width/3,
-                //   height: 100,
-                //   child: new Card(
-                //
-                //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                //     child: new Center(
-                //         child: Column(
-                //           mainAxisAlignment: MainAxisAlignment.center,
-                //           crossAxisAlignment: CrossAxisAlignment.center,
-                //           children: [
-                //             Image.asset('assets/Asset7.png',height: 60,width: 60),
-                //             SizedBox(height: 5,),
-                //             Text('Laundry Service',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
-                //           ],
-                //         )
-                //     ),
-                //   ),
-                // ),
-              ],
+                  // Container(
+                  //   //  color: Color(0xffCB69A6),
+                  //   width: MediaQuery.of(context).size.width/3,
+                  //   height: 100,
+                  //   child: new Card(
+                  //
+                  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  //     child: new Center(
+                  //         child: Column(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           crossAxisAlignment: CrossAxisAlignment.center,
+                  //           children: [
+                  //             Image.asset('assets/Asset7.png',height: 60,width: 60),
+                  //             SizedBox(height: 5,),
+                  //             Text('Laundry Service',style: TextStyle(color:Color(0xff000000),fontSize: 9,fontWeight: FontWeight.bold,),),
+                  //           ],
+                  //         )
+                  //     ),
+                  //   ),
+                  // ),
+                ],
             ),
             Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20.0,right: 20),
-                child: Container(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0,right: 20),
+                  child: Container(
 
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                    borderRadius: BorderRadius.circular(10)
-                  ),
-                  child:Row(
+                    height: 80,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                    child:Row(
 
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Image.asset('assets/Asset8.png',height: 60,width: 60),
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Image.asset('assets/Asset8.png',height: 60,width: 60),
 
-                      Text('EMERGENCY',style: TextStyle(color:Color(0xff000000),fontSize: 22,fontWeight: FontWeight.bold,),),
+                        Text('EMERGENCY',style: TextStyle(color:Color(0xff000000),fontSize: 22,fontWeight: FontWeight.bold,),),
 
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
             )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
